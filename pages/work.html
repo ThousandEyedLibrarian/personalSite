@@ -7,19 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CFS</title>
     <link rel="stylesheet" href="../style/style.css">      
-    <script src="../scripts/scripts.js">
-    </script></head>
+    <script src="../scripts/scripts.js"></script>
+    </head>
 
-<body class="text-white" onload="filterObjects('all')">
+<body onload="filterObjects('all')" class="text-white">
   <div class="bg h-screen w-screen">
 
     <!-- Nav -->
-  <header class="flex items-center p-9">
+  <header class="flex items-center p-9 mb-12">
     <a href="../index.html"><p class="font-semibold text-3xl">CFS.</a>
 
     <nav>
       <ul id="menumobile" class="font-semibold text-md list-none pr-5 justify-between absolute right-0">
-        <li class="inline-block mx-6"><a href="dollars.html">DOLLARS.</a></li>
         <li class="inline-block mx-6"><a href="about.html">About.</a></li>
         <li class="inline-block mx-6"><a href="work.html">Work.</a></li>
         <li class="inline-block mx-6"><a href="mailto:carterfaceysmith@gmail.com">Contact.</a></li>
@@ -27,54 +26,54 @@
     </nav>
   </header>
 
-  <div class="mt-12">
-    <div id="filtersTablet" class="flex flex-wrap grid-flow-row grid-rows-1 grid-cols-4 gap-10 justify-center pb-10">
+  <!-- <div class="mt-12">
+    <div id="filtersTablet" class="flex flex-wrap gap-10 justify-center pb-10">
       <button id="AllFilter" class="btn font-bold text-sm text-center transition duration-200 ease-linear text-white hover:text-blue-500 cursor-pointer" onclick="filterObjects('all')">All</button>
       <button id="JavaFilter" class="btn font-bold text-sm text-center transition duration-200 ease-linear text-white hover:text-blue-500 cursor-pointer" onclick="filterObjects('java')">Java</button>
       <button id="PythonFilter" class="btn font-bold text-sm text-center transition duration-200 ease-linear text-white hover:text-blue-500 cursor-pointer" onclick="filterObjects('python')">Python</button>
       <button id="HTMLFilter" class="btn font-bold text-sm text-center transition duration-200 ease-linear text-white hover:text-blue-500 cursor-pointer" onclick="filterObjects('html')">HTML/CSS</button>
-      <button id="HTMLFilter" class="btn font-bold text-sm text-center transition duration-200 ease-linear text-white hover:text-blue-500 cursor-pointer" onclick="filterObjects('JS')">JavaScript</button>
-    </div>
+      <button id="JSFilter" class="btn font-bold text-sm text-center transition duration-200 ease-linear text-white hover:text-blue-500 cursor-pointer" onclick="filterObjects('JS')">JavaScript</button>
+    </div> -->
 
-    <div id="projects" class="objects flex flex-wrap grid-flow-col grid-cols-2 grid-rows-4 gap-20 justify-center">
+    <div id="projects" class="objects flex flex-wrap gap-20 justify-center mb-24">
 
       <a href="projects/gcfsolver.html">
-        <div class="box python opacity-0 bg-white border-2 border-solid py-16 px-12 fadein1 rounded-lg transition duration-2150 ease-linear border-white hover:border-blue-400">
+        <div class="box python bg-white border-2 border-solid py-16 px-12 rounded-lg border-white hover:border-blue-400">
           <p class="semibold text-center text-black text-sm mb-3">Euclidean Algorithm GCF Solver</p>
-          <p id="language" class="text-black text-center text-xs langs">Python</p>
+          <p id="language" class="text-black text-center text-sm langs">Python</p>
         </div>
       </a>
       
       <a href="projects/notspaceinvaders.html">
-        <div class="box python opacity-0 bg-white border-2 border-solid py-16 px-8 fadein2 rounded-lg transition duration-2150 ease-linear border-white hover:border-blue-400">
+        <div class="box python bg-white border-2 border-solid py-16 px-8 rounded-lg border-white hover:border-blue-400">
           <p class="semibold text-center text-black text-sm mb-3">Definitely Not Space Invaders</p>
           <p class="text-black text-center text-sm langs">Python</p>
         </div>
       </a>
 
       <a href="projects/dagons.html">
-        <div class="box java opacity-0 bg-white border-2 border-solid py-16 px-8 fadein3 rounded-lg transition duration-2150 ease-linear border-white hover:border-blue-400">
+        <div class="box java  bg-white border-2 border-solid py-16 px-8 rounded-lg border-white hover:border-blue-400">
           <p class="semibold text-center text-black text-sm mb-3">Dagon's Mountain</p>
           <p id="langs" class="text-black text-center text-sm">Java</p>
         </div>
       </a>
 
       <a href="projects/jsgraphtraversal.html">
-        <div class="box JS opacity-0 bg-white border-2 border-solid py-16 px-8 fadein4 rounded-lg transition duration-2150 ease-linear border-white hover:border-blue-400">
+        <div class="box JS  bg-white border-2 border-solid py-16 px-8 rounded-lg border-white hover:border-blue-400">
           <p class="semibold text-center text-black text-sm mb-3">Graph Traversal Algorithm</p>
           <p id="langs" class="text-black text-center text-sm">JavaScript</p>
         </div>
       </a>
 
       <a href="projects/bankingsim.html">
-        <div class="box java opacity-0 bg-white border-2 border-solid py-16 px-8 fadein5 rounded-lg transition duration-2150 ease-linear border-white hover:border-blue-400">
+        <div class="box java  bg-white border-2 border-solid py-16 px-8 rounded-lg border-white hover:border-blue-400">
           <p class="semibold text-center text-black text-sm mb-3">Terminal-Based Banking Simulation</p>
           <p class="text-black text-center text-sm langs">Java</p>
         </div>
       </a>
 
       <a href="projects/covidwebapp.html">
-        <div class="box html js java opacity-0 bg-white border-2 border-solid py-16 px-8 fadein6 rounded-lg transition duration-2150 ease-linear border-white hover:border-blue-400">
+        <div class="box html js java bg-white border-2 border-solid py-16 px-8 fadein6 rounded-lg border-white hover:border-blue-400">
           <p class="semibold text-center text-black text-sm mb-3">COVID-19 Global Statistic Web App</p>
           <p class="text-black text-center text-sm langs">HTML/CSS, JavaScript, Java</p>
         </div>
@@ -84,7 +83,7 @@
   </div>
 
   <!--footer-->
-  <div class="h-8"></div>
+  <div class=""></div>
   </div>
 
   

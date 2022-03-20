@@ -37,14 +37,16 @@ body, html {
 }
 
 .box {
-  display: none;
-}
-
-.show {
   display: block;
   height: 208px;
   width: 208px;
 }
+
+/* .show {
+  display: block;
+  height: 208px;
+  width: 208px;
+} */
 
 .hide {
   display: none;
