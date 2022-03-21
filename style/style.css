@@ -25,16 +25,21 @@ Use a better box model (opinionated).
 body, html {
   height: 100%;
   /* The image used */
-  background-image: url("../resources/bg-full.jpg");
+  background-color: rgb(48, 47, 47);
 
   /* Full height */
   height: 100%;
+
+  overflow-x: hidden;
+  overflow-y: visible;
 
   /* Center and scale the image nicely */
   background-position: center;
   background-size: cover;  
   background-repeat: repeat-y;
 }
+
+
 
 .box {
   display: block;
@@ -172,7 +177,6 @@ body {
   }
   #menumobile {
     padding-top: 60px;
-    text-align: center;
     width: 100%;
   }
   #titlemobile {
