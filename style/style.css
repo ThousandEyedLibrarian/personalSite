@@ -15,7 +15,7 @@ Use a better box model (opinionated).
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 *,
 ::before,
 ::after {
@@ -61,6 +61,7 @@ body {
   font-family: 'Varela', sans-serif;
 }
 
+
 .homepage {
   background-image: url("../resources/paint.jpg");
 
@@ -83,7 +84,7 @@ body {
 }
 
 .fancyfont {
-  font-family: 'Vollkorn', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 .headerwipe {
   white-space: nowrap;
@@ -94,8 +95,8 @@ body {
 }
 .fadeintext {
   opacity: 0;
-  animation: fadeIn linear 2.5s;
-  animation-delay: 3s;
+  animation: fadeIn linear 3s;
+  animation-delay: 1.2s;
   animation-fill-mode: forwards;
 }
 
