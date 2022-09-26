@@ -1,38 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" class="home">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CARTER</title>
-    <link rel="stylesheet" href="style/style.css">      
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/cfs.css">
+    <title>carterfaceysmith.tech</title>
 </head>
 
-<body class="text-white overflow-hidden tracking-wide">
-  <div class=" h-screen w-screen">
-
-   <!-- Nav -->
-   <header class="flex items-center  p-9">
-    <a href="../index.html"><p class="font-semibold text-3xl">CARTER</a>
-
-    <nav class="w-screen">
-      <ul id="menumobile" class=" font-semibold text-md text-right list-none p-6 pr-0 justify-between right-0">
-        <li class="my-2"><a href="pages/about.html">About.</a></li>
-        <li class="my-2"><a href="pages/work.html">Projects.</a></li>
-        <li class="my-2"><a href="mailto:carterfaceysmith@gmail.com?subject=CFS Design Works Contact: ">Contact.</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="h-screen flex">
-    <div class="m-auto mt-28">
-      <p id="titlemobile" class="fancyfont fadeintext font-bold text-2xl">CFS Design Works.</p>
-      <p class="font-semibold text-sm italic text-md py-5 fadeintext">Trainee Lawyer turned Developer</p>
+<body>
+    <div id="title-container">
+        <h1>carterfaceysmith.tech</h1>
     </div>
-  </div>
+    <div id="content-container">
+        <div>
+            <h1>Premier projects</h1>
+        </div>
+        <div>
+            <h2>
+                Rally Ukraine
+            </h2>
+            <h3>
+                Information and news consolidation site regarding the invasion of Ukraine.
+            </h3>
+            <p>
+                <a target="_blank" href="https://www.rallyukraine.com">View</a>
+            </p>
+        </div>
+        <div class="spacing">━━</div>
+        <div>
+            <h2>
+                Accounts
+            </h2>
+            <p>
+                <a target="_blank" href="https://github.com/carterfaceysmith">GitHub</a>
+                <a target="_blank" href="https://www.linkedin.com/in/carterfacey/">LinkedIn</a>
+            </p>
+        </div>
+    </div>
 
-  </div>
+    <div id="scroll-txt-container">
+        <p>- Scroll down -</p>
+    </div>
+
+    <script>
+        const titleContainer = document.getElementById('title-container');
+        const scrollTxtContainer = document.getElementById('scroll-txt-container');
+
+        window.addEventListener('scroll', function () {
+            let distanceToTop = window.pageYOffset;
+            let progress = distanceToTop / window.innerHeight;
+
+            titleContainer.style.opacity = Math.max(0, 1 - 2 * progress);
+            scrollTxtContainer.style.opacity = Math.max(0, 1 - 4 * progress);
+        });
+    </script>
 </body>
 
 </html>
