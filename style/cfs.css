@@ -50,7 +50,7 @@ h3 {
 
 #content-container>div {
     margin-top: 3em;
-    margin-bottom: 3em;
+    margin-bottom: 0em;
 }
 
 #content-container {
@@ -73,6 +73,28 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+@media only screen and (min-width: 600px) {
+    a {
+        font-size: 2em;
+    }
+    
+    #scroll-txt-container {
+        font-size: 2em;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.8em;
+    }
+}   
 
 @media (max-aspect-ratio: 1/1) {
     #scroll-txt-container {
