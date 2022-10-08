@@ -96,21 +96,24 @@ a:hover {
     }
 }   
 
-@media (max-aspect-ratio: 1/1) {
+@media only screen and (min-width: 900px) {
     #scroll-txt-container {
-        font-size: 2em;
+        font-size: 1em;
     }
 
     h1 {
-        font-size: 4em;
-    }
-
-    h2 {
         font-size: 3em;
     }
 
-    h3 {
+    h2 {
         font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 0.8em;
+    }
+    a{
+        font-size: 0.8em;
     }
 }
 
