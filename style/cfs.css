@@ -74,7 +74,7 @@ a:hover {
     text-decoration: underline;
 }
 
-@media only screen and (min-width: 600px) {
+@media screen and (min-width: 600px) {
     a {
         font-size: 2em;
     }
@@ -96,7 +96,7 @@ a:hover {
     }
 }   
 
-@media only screen and (min-width: 900px) {
+@media screen and (min-width: 1024px) {
     #scroll-txt-container {
         font-size: 1em;
     }
