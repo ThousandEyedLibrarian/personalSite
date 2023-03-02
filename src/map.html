@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/cfs.css">
+    <title>Carter Facey-Smith - Explore</title>
+</head>
+
+<body>
+    <div id="title-container">
+        <i><h1>"I am not the same, having seen the moon shine on the other side of the world."</h1></i>
+    </div>
+    <div id="content-container">
+        <div>
+            <h2>
+                ASIA
+            </h2>
+            <h3>
+                <b>China</b>: Beijing, Nanjing, Xi'An<br>
+                <b>Hong Kong</b><br>
+                <b>Japan</b>: Himeji, Kobe, Kyoto, Nara, Osaka, Tokyo<br>
+                <b>Singapore</b><br>
+            </h3>
+        </div>
+
+        <div>
+            <h2>
+                EUROPE
+            </h2>
+            <h3>
+                <b>England</b>: London<br>
+                <b>Germany</b>: Berlin, Frankfurt, Munich<br>
+                <b>Italy</b>: Florence, Rome<br>
+                <b>Netherlands</b>: Amsterdam, Leiden, Pumerend<br>
+                <b>Scotland</b>: Edinburgh, Glasgow<br>
+                <b>Switzerland</b>: Grindelwald
+            </h3>
+        </div>
+
+        <div>
+            <h2>
+                NORTH AMERICA
+            </h2>
+            <h3>
+                <b>United States</b>: Boston, Hawaii, New York, Los Angeles
+            </h3>
+        </div>
+
+        <div>
+            <h2>
+                OCEANIA
+            </h2>
+            <h3>
+                <b>Australia</b>: Cairns, Gold Coast, Melbourne, Port Douglas, Sydney, Whitsundays<br>
+                <b>New Zealand</b>: Auckland, Raglan<br>
+            </h3>
+        </div>
+        
+        <div class="spacing">━━</div>
+        
+        <div>
+            <h2>
+                Accounts
+            </h2>
+            <p>
+                <a rel="noopener noreferrer" href="../index.html">Home</a> - <a target="_blank" rel="noopener noreferrer" href="https://github.com/carterfaceysmith">GitHub</a> - <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/carterfacey/">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="scroll-txt-container">
+        <p>- Scroll down -</p>
+    </div>
+
+    <script>
+        const titleContainer = document.getElementById('title-container');
+        const scrollTxtContainer = document.getElementById('scroll-txt-container');
+
+        window.addEventListener('scroll', function () {
+            let distanceToTop = window.pageYOffset;
+            let progress = distanceToTop / window.innerHeight;
+
+            titleContainer.style.opacity = Math.max(0, 1 - 2 * progress);
+            scrollTxtContainer.style.opacity = Math.max(0, 1 - 4 * progress);
+        });
+    </script>
+</body>
+
+</html>
