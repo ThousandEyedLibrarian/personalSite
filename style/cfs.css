@@ -134,14 +134,9 @@ height: 200px;
     pointer-events: none;
 }
 
-#title-container > h1 {
-    order: 1;  /* Ensures the h1 stays on top */
-}
-
 #title-container > i {
     opacity: 0;
     transition: opacity 1s;
-    order: 2;  /* Positions all i elements below the h1 */
 }
 
 #title-container > i:first-child {
