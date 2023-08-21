@@ -17,6 +17,8 @@
 
 I recently changed my portfolio website to be much more minimal and simple in terms of both language used, and file structure/size.
 
+There you can find my travels, writing, and key projects.
+
 This will serve as an interim website until I find the elusive time to construct my magnum opus portfolio site.
 
 <!-- TECH STACK -->
@@ -26,7 +28,7 @@ This will serve as an interim website until I find the elusive time to construct
 * CSS
 * JS
 
-<p align="right">(<a href="#readme-top">To top</a>)</p>
+<!-- <p align="right">(<a href="#readme-top">To top</a>)</p> -->
 
 <!-- LICENSE -->
 ## License
