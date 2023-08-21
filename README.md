@@ -1,6 +1,7 @@
 <a name="readme-top"></a>
 
 <br />
+<!-- TITLE SECTION -->
 <h3 align="center">carterfaceysmith.tech</h3>
 
   <p align="center">
@@ -18,18 +19,18 @@ I recently changed my portfolio website to be much more minimal and simple in te
 
 This will serve as an interim website until I find the elusive time to construct my magnum opus portfolio site.
 
+<!-- TECH STACK -->
 ### Built With
 
 * HTML
 * CSS
 * JS
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">To top</a>)</p>
 
+<!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 </br>
 </br>
-
-Godspeed.
