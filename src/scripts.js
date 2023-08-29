@@ -26,6 +26,6 @@ window.addEventListener('scroll', function () {
             elements[currentIndex].style.opacity = "1";
         }, 1000); // Matches the 1s transition duration in the CSS
 
-    }, 5000); // 5000 milliseconds or 5 seconds
+    }, 3000); // 5000 milliseconds or 5 seconds
 })();
 
