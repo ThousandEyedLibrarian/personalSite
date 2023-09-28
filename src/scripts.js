@@ -9,23 +9,23 @@ window.addEventListener('scroll', function () {
     scrollTxtContainer.style.opacity = Math.max(0, 1 - 4 * progress);
 });
 
-(function() {
-    const container = document.getElementById("title-container");
-    const elements = container.querySelectorAll('i');
-    let currentIndex = 0;
+// (function() {
+//     const container = document.getElementById("title-container");
+//     // const elements = container.querySelectorAll('i');
+//     let currentIndex = 0;
 
-    setInterval(() => {
-        // Hide the current visible element
-        elements[currentIndex].style.opacity = "0";
+//     setInterval(() => {
+//         // Hide the current visible element
+//         elements[currentIndex].style.opacity = "0";
 
-        // Move to the next element
-        currentIndex = (currentIndex + 1) % elements.length;
+//         // Move to the next element
+//         currentIndex = (currentIndex + 1) % elements.length;
 
-        // Delay the showing of the next element to sync with the fade out effect
-        setTimeout(() => {
-            elements[currentIndex].style.opacity = "1";
-        }, 1000); // Matches the 1s transition duration in the CSS
+//         // Delay the showing of the next element to sync with the fade out effect
+//         setTimeout(() => {
+//             elements[currentIndex].style.opacity = "1";
+//         }, 1000); // Matches the 1s transition duration in the CSS
 
-    }, 5000); // 5000 milliseconds or 5 seconds
-})();
+//     }, 5000); // 5000 milliseconds or 5 seconds
+// })();
 

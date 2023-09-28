@@ -134,14 +134,14 @@ height: 200px;
     pointer-events: none;
 }
 
-#title-container > i {
+/* #title-container > i {
     opacity: 0;
     transition: opacity 1s;
 }
 
 #title-container > i:first-child {
     opacity: 1;
-}
+} */
 
 #scroll-txt-container {
     position: fixed;
