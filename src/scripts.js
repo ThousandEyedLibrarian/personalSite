@@ -1,5 +1,3 @@
-import * from 'p5';
-
 const titleContainer = document.getElementById('title-container');
 const scrollTxtContainer = document.getElementById('scroll-txt-container');
 
