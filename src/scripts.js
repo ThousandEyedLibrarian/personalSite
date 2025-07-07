@@ -7,37 +7,46 @@ window.addEventListener('scroll', function () {
     scrollTxtContainer.style.opacity = Math.max(0, 1 - 4 * progress);
 });
 
-// Theme toggle functionality
+// Theme toggle functionality (desktop only)
 let isDarkMode = false;
 
 function toggleTheme() {
-    isDarkMode = !isDarkMode;
-    const body = document.body;
-    const themeIcon = document.querySelector('.theme-icon');
-    
-    if (isDarkMode) {
-        body.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '☀️';
-    } else {
-        body.removeAttribute('data-theme');
-        themeIcon.textContent = '🌙';
+    // Only allow toggle on desktop screens
+    if (window.innerWidth >= 1024) {
+        isDarkMode = !isDarkMode;
+        const body = document.body;
+        const themeIcon = document.querySelector('.theme-icon');
+        
+        if (isDarkMode) {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️';
+        } else {
+            body.removeAttribute('data-theme');
+            themeIcon.textContent = '🌙';
+        }
     }
 }
 
-// Set initial theme based on user preference (system preference)
+// Set initial theme based on user preference and screen size
 function initializeTheme() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        toggleTheme();
+    if (window.innerWidth >= 1024) {
+        // Desktop: use system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            toggleTheme();
+        }
     }
+    // Mobile/tablet: CSS automatically applies dark mode
 }
 
-// Listen for system theme changes
-if (window.matchMedia) {
+// Listen for system theme changes (desktop only)
+if (window.matchMedia && window.innerWidth >= 1024) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-        if (e.matches && !isDarkMode) {
-            toggleTheme();
-        } else if (!e.matches && isDarkMode) {
-            toggleTheme();
+        if (window.innerWidth >= 1024) {
+            if (e.matches && !isDarkMode) {
+                toggleTheme();
+            } else if (!e.matches && isDarkMode) {
+                toggleTheme();
+            }
         }
     });
 }
