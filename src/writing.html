@@ -7,20 +7,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style/cfs.css">
-    <title>Writing</title>
+    <title>Writing - Librarian</title>
 </head>
 
 <body>
+    <!-- Theme Toggle Button -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
         <span class="theme-icon">🌙</span>
     </button>
 
     <div id="title-container">
-        <i><h1>Coming soon.</h1></i>
+        <h1>Writing & Notes</h1>
+        <i><h3>A collection of thoughts and ideas</h3></i>
     </div>
-    
+
     <div id="content-container">
+        <div id="loading" style="text-align: center;">
+            <h3>Loading articles...</h3>
+        </div>
         
+        <div id="articles-list" style="display: none;">
+            <!-- Articles will be populated here -->
+        </div>
+
         <div class="spacing">━━</div>
         
         <div>
@@ -34,8 +43,90 @@
     <div id="scroll-txt-container">
         <p>- Scroll down -</p>
     </div>
-
+    
     <script src="/src/scripts.js"></script>
+    <script>
+        // List of markdown files - update this array when you add new files
+        const markdownFiles = [
+            {
+                filename: 'example-post.md',
+                title: 'Example Post',
+                description: 'A sample markdown post to demonstrate the system',
+                date: '2025-01-15'
+            },
+            {
+                filename: 'machine-learning-notes.md',
+                title: 'Machine Learning Notes',
+                description: 'Personal notes on ML concepts and implementations',
+                date: '2025-01-10'
+            },
+            {
+                filename: 'rust-vs-cpp.md',
+                title: 'Rust vs C++: A Developer\'s Perspective',
+                description: 'Comparing modern systems programming languages',
+                date: '2025-01-05'
+            }
+        ];
+
+        // Function to load and display article list
+        function loadArticlesList() {
+            const articlesList = document.getElementById('articles-list');
+            const loading = document.getElementById('loading');
+            
+            // Sort articles by date (newest first)
+            const sortedArticles = markdownFiles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            let articlesHTML = '';
+            
+            sortedArticles.forEach(article => {
+                const formattedDate = new Date(article.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                articlesHTML += `
+                    <div class="article-item">
+                        <h2>
+                            <a href="viewer.html?file=${encodeURIComponent(article.filename)}">${article.title}</a>
+                        </h2>
+                        <h3>${article.description}</h3>
+                        <h3><i>${formattedDate}</i></h3>
+                    </div>
+                `;
+            });
+            
+            articlesList.innerHTML = articlesHTML;
+            loading.style.display = 'none';
+            articlesList.style.display = 'block';
+        }
+
+        // Load articles when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadArticlesList();
+        });
+    </script>
+    
+    <style>
+        .article-item {
+            margin-bottom: 2em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .article-item:last-child {
+            border-bottom: none;
+        }
+        
+        .article-item h2 a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .article-item h2 a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </body>
 
 </html>

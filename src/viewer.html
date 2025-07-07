@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/cfs.css">
+    <title>Article - Librarian</title>
+    
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <!-- Highlight.js for code syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" id="highlight-light">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="highlight-dark" disabled>
+</head>
+
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <span class="theme-icon">🌙</span>
+    </button>
+
+    <div id="loading-container" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; background: var(--bg-color); z-index: 100;">
+        <h2>Loading article...</h2>
+    </div>
+
+    <div id="article-container" style="display: none; max-width: 800px; margin: 0 auto; padding: 2em; margin-top: 4em;">
+        <div class="back-button" style="margin-bottom: 2em;">
+            <a href="writing.html">← Back to Writing</a>
+        </div>
+        
+        <article id="markdown-content">
+            <!-- Markdown content will be rendered here -->
+        </article>
+        
+        <div class="spacing" style="margin: 3em 0;">━━</div>
+        
+        <div style="text-align: center;">
+            <p>
+                <a rel="noopener noreferrer" href="../index.html">Home</a> - <a rel="noopener noreferrer" href="/src/map.html">Map</a> - <a rel="noopener noreferrer" href="/src/writing.html">Writing</a> -
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/carterfaceysmith">GitHub</a> - <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/carterfacey/">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="/src/scripts.js"></script>
+    <script>
+        // Function to get URL parameter
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to load and render markdown
+        async function loadMarkdown() {
+            const filename = getUrlParameter('file');
+            
+            if (!filename) {
+                document.getElementById('loading-container').innerHTML = '<h2>No file specified</h2>';
+                return;
+            }
+
+            try {
+                // Fetch the markdown file
+                const response = await fetch(`content/${filename}`);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filename}`);
+                }
+                
+                const markdownText = await response.text();
+                
+                // Configure marked options
+                marked.setOptions({
+                    highlight: function(code, lang) {
+                        if (lang && hljs.getLanguage(lang)) {
+                            try {
+                                return hljs.highlight(code, { language: lang }).value;
+                            } catch (err) {}
+                        }
+                        return hljs.highlightAuto(code).value;
+                    },
+                    breaks: true,
+                    gfm: true
+                });
+                
+                // Convert markdown to HTML
+                const htmlContent = marked.parse(markdownText);
+                
+                // Display the content
+                document.getElementById('markdown-content').innerHTML = htmlContent;
+                document.getElementById('loading-container').style.display = 'none';
+                document.getElementById('article-container').style.display = 'block';
+                
+                // Update page title
+                const firstHeading = document.querySelector('#markdown-content h1, #markdown-content h2');
+                if (firstHeading) {
+                    document.title = firstHeading.textContent + ' - Librarian';
+                }
+                
+            } catch (error) {
+                console.error('Error loading markdown:', error);
+                document.getElementById('loading-container').innerHTML = 
+                    `<div style="text-align: center;">
+                        <h2>Error loading article</h2>
+                        <p>Could not load ${filename}</p>
+                        <p><a href="writing.html">← Back to Writing</a></p>
+                    </div>`;
+            }
+        }
+
+        // Override theme toggle to handle syntax highlighting
+        const originalToggleTheme = window.toggleTheme;
+        window.toggleTheme = function() {
+            if (originalToggleTheme) {
+                originalToggleTheme();
+            }
+            
+            // Toggle syntax highlighting theme
+            const lightTheme = document.getElementById('highlight-light');
+            const darkTheme = document.getElementById('highlight-dark');
+            const isDark = document.body.hasAttribute('data-theme');
+            
+            if (isDark) {
+                lightTheme.disabled = true;
+                darkTheme.disabled = false;
+            } else {
+                lightTheme.disabled = false;
+                darkTheme.disabled = true;
+            }
+        };
+
+        // Load markdown when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMarkdown();
+        });
+    </script>
+    
+    <style>
+        /* Markdown content styling */
+        #markdown-content {
+            line-height: 1.6;
+        }
+        
+        #markdown-content h1,
+        #markdown-content h2,
+        #markdown-content h3,
+        #markdown-content h4,
+        #markdown-content h5,
+        #markdown-content h6 {
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+        
+        #markdown-content h1:first-child,
+        #markdown-content h2:first-child {
+            margin-top: 0;
+        }
+        
+        #markdown-content p {
+            margin-bottom: 1em;
+            font-size: 1.1em;
+        }
+        
+        #markdown-content ul,
+        #markdown-content ol {
+            margin-bottom: 1em;
+            padding-left: 2em;
+        }
+        
+        #markdown-content li {
+            margin-bottom: 0.5em;
+        }
+        
+        #markdown-content blockquote {
+            border-left: 4px solid var(--text-color);
+            margin: 1em 0;
+            padding-left: 1em;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        #markdown-content code {
+            background-color: var(--hover-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        #markdown-content pre {
+            background-color: var(--hover-bg);
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        
+        #markdown-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        #markdown-content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+        
+        #markdown-content th,
+        #markdown-content td {
+            border: 1px solid var(--border-color);
+            padding: 0.5em;
+            text-align: left;
+        }
+        
+        #markdown-content th {
+            background-color: var(--hover-bg);
+            font-weight: 400;
+        }
+        
+        #markdown-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 1em 0;
+        }
+        
+        .back-button a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 400;
+        }
+        
+        .back-button a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 600px) {
+            #article-container {
+                padding: 1em;
+                margin-top: 2em;
+            }
+            
+            #markdown-content p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</body>
+
+</html>
