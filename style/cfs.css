@@ -1,5 +1,29 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #000000;
+    --hover-bg: #ffeed9;
+    --border-color: #ddd;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --link-color: #e0e0e0;
+    --hover-bg: #333333;
+    --border-color: #444;
+}
+
 * {
     font-family: 'Poppins';
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -13,6 +37,39 @@ h2 {
 h3 {
     font-weight: 200;
     font-style: italic;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--bg-color);
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+    background: var(--hover-bg);
+    transform: scale(1.1);
+}
+
+.theme-icon {
+    transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .theme-icon {
+    transform: rotate(180deg);
 }
 
 #diary-page-container {
@@ -48,7 +105,7 @@ height: 200px;
     width: 600px;
     height: 400px;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: var(--bg-color);
 }
             
 .p-wrapper {
@@ -100,13 +157,13 @@ height: 200px;
     text-align: center;
     border-radius: 4px;
     color: #aaa;
-    background-color: #fff;
+    background-color: var(--bg-color);
     transition: all 0.3s ease;
 }
             
 [class^="label_"]:hover {
     color: #444;
-    background-color: #ffeed9;
+    background-color: var(--hover-bg);
 }
             
 #button_a:checked ~ #navigation .label_a,
@@ -114,8 +171,8 @@ height: 200px;
 #button_c:checked ~ #navigation .label_c,
 #button_d:checked ~ #navigation .label_d {
      cursor: default;
-     color: #fff;
-     background-color: #222;
+     color: var(--bg-color);
+     background-color: var(--text-color);
 }
 
 #title-container {
@@ -177,7 +234,7 @@ height: 200px;
 }
 
 a {
-    color: black;
+    color: var(--link-color);
     text-decoration: none;
 }
 
