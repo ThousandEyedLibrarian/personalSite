@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style/cfs.css">
-    <title>Writing - Librarian</title>
+    <title>Writing</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
         <div>
             <p>
                 <a rel="noopener noreferrer" href="../index.html">Home</a> - <a rel="noopener noreferrer" href="map.html">Map</a> - <a rel="noopener noreferrer" href="writing.html">Writing</a> -
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/ThousandEyedLibrarian">GitHub</a> - <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/carterfacey/">LinkedIn</a>
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/carterfaceysmith">GitHub</a> - <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/carterfacey/">LinkedIn</a>
             </p>
         </div>
     </div>
@@ -125,6 +125,88 @@
         
         .article-item h2 a:hover {
             text-decoration: underline;
+        }
+
+        /* Mobile responsive adjustments */
+        @media screen and (max-width: 600px) {
+            #content-container {
+                padding: 2em 1em;
+            }
+            
+            .article-item {
+                margin-bottom: 1.5em;
+                padding-bottom: 0.8em;
+            }
+            
+            .article-item h2 {
+                font-size: 1.3em;
+                margin-bottom: 0.5em;
+                line-height: 1.3;
+            }
+            
+            .article-item h3 {
+                font-size: 1em;
+                margin-bottom: 0.3em;
+                line-height: 1.4;
+            }
+            
+            /* Make navigation links smaller on mobile */
+            #content-container p a {
+                font-size: 0.9em;
+                margin: 0 0.2em;
+            }
+            
+            /* Adjust title container for mobile */
+            #title-container h1 {
+                font-size: 2em;
+                margin-bottom: 0.5em;
+            }
+            
+            #title-container h3 {
+                font-size: 1.2em;
+                margin: 0.2em 0;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media screen and (min-width: 601px) and (max-width: 1023px) {
+            #content-container {
+                padding: 3em 2em;
+            }
+            
+            .article-item h2 {
+                font-size: 1.6em;
+            }
+            
+            .article-item h3 {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Desktop adjustments */
+        @media screen and (min-width: 1024px) {
+            #content-container {
+                padding: 5em;
+            }
+            
+            .article-item h2 {
+                font-size: 1.8em;
+            }
+            
+            .article-item h3 {
+                font-size: 1em;
+            }
+        }
+
+        /* Loading state responsive */
+        #loading {
+            padding: 2em 1em;
+        }
+        
+        @media screen and (max-width: 600px) {
+            #loading h3 {
+                font-size: 1.2em;
+            }
         }
     </style>
 </body>
