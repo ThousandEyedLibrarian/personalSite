@@ -67,7 +67,7 @@
 
             try {
                 // Fetch the markdown file
-                const response = await fetch(`content/${filename}`);
+                const response = await fetch(`../content/${filename}`);                
                 
                 if (!response.ok) {
                     throw new Error(`Failed to load ${filename}`);
