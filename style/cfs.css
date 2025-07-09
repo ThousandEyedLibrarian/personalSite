@@ -108,17 +108,16 @@ h3 {
     position: relative;
     width: 100%;
     height: 100%;
-  }
-  
-#object-container {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 200px;
-height: 200px;
 }
   
+#object-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+}
 
 #notes_container {
     display: flex;
@@ -202,9 +201,9 @@ height: 200px;
 #button_b:checked ~ #navigation .label_b,
 #button_c:checked ~ #navigation .label_c,
 #button_d:checked ~ #navigation .label_d {
-     cursor: default;
-     color: var(--bg-color);
-     background-color: var(--text-color);
+    cursor: default;
+    color: var(--bg-color);
+    background-color: var(--text-color);
 }
 
 #title-container {
@@ -223,15 +222,6 @@ height: 200px;
     pointer-events: none;
 }
 
-/* #title-container > i {
-    opacity: 0;
-    transition: opacity 1s;
-}
-
-#title-container > i:first-child {
-    opacity: 1;
-} */
-
 #scroll-txt-container {
     position: fixed;
     margin: 0;
@@ -244,15 +234,10 @@ height: 200px;
     text-align: center;
     justify-content: center;
     align-items: center;
-
     font-weight: 400;
 }
 
-#content-container>div {
-    margin-top: 3em;
-    margin-bottom: 0em;
-}
-
+/* New asymmetric section layout for index.html */
 #content-container {
     margin-top: 100vh;
     padding: 5em;
@@ -263,6 +248,81 @@ height: 200px;
     justify-content: center;
     text-align: center;
     box-sizing: border-box;
+}
+
+/* Default styling for regular content divs */
+#content-container > div {
+    margin-top: 3em;
+    margin-bottom: 0em;
+}
+
+/* Only apply to asymmetric sections on index.html */
+#content-container > div.asymmetric-section {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#content-container > div.asymmetric-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section titles - upper left, bigger */
+#content-container > div.asymmetric-section > h2 {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    font-size: 3.5em;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Section content wrapper - lower right */
+.section-content {
+    margin-left: 45%;
+    margin-top: 8em;
+    text-align: left;
+    max-width: 500px;
+}
+
+.section-content h3 {
+    margin: 0.5em 0;
+}
+
+.section-content p {
+    margin: 1em 0;
+}
+
+/* Spacing dividers */
+#content-container > div.spacing {
+    min-height: auto !important;
+    display: block !important;
+    margin: 4em 0;
+    text-align: center;
+    user-select: none;
+    opacity: 0.2 !important;
+    transform: none !important;
+}
+
+/* Navigation section centered - override asymmetric layout */
+#content-container > div.navigation {
+    min-height: auto !important;
+    display: block !important;
+    text-align: center;
+    opacity: 1 !important;
+    transform: none !important;
+    margin-top: 4em;
+}
+
+#content-container > div.navigation p {
+    margin: 0 auto;
 }
 
 a {
@@ -294,6 +354,10 @@ a:hover {
     h3 {
         font-size: 1.8em;
     }
+    
+    #content-container {
+        padding: 5em;
+    }
 }   
 
 @media screen and (min-width: 1024px) {
@@ -311,20 +375,57 @@ a:hover {
     }
 
     h2 {
-        font-size: 1.8em;
+        font-size: 2.5em;
     }
 
     h3 {
         font-size: 1em;
     }
-    a{
+    
+    a {
         font-size: 1em;
+    }
+    
+    #content-container {
+        padding: 8em 5em;
     }
 }
 
-#content-container>div.spacing {
-    margin-top: 0;
-    margin-bottom: 0;
+/* Mobile responsive */
+@media screen and (max-width: 600px) {
+    #content-container {
+        padding: 3em 2em;
+    }
+}
 
-    user-select: none;
+@media screen and (max-width: 768px) {
+    #content-container {
+        padding: 3em 2em;
+    }
+    
+    #content-container > div.asymmetric-section > h2 {
+        position: relative;
+        left: 0;
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+
+    .section-content {
+        margin-left: 0;
+        margin-top: 0;
+        text-align: center;
+        padding: 0 2em;
+    }
+
+    #content-container > div.asymmetric-section {
+        flex-direction: column;
+        min-height: auto;
+        padding: 2em 0;
+    }
+    
+    /* Ensure navigation is visible on mobile */
+    #content-container > div.navigation {
+        margin-top: 2em;
+    }
 }

@@ -24,14 +24,22 @@ function toggleTheme() {
             body.removeAttribute('data-theme');
             themeIcon.textContent = '🌙';
         }
+        
+        // Save theme preference
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
     }
 }
 
 // Set initial theme based on user preference and screen size
 function initializeTheme() {
     if (window.innerWidth >= 1024) {
-        // Desktop: use system preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // Check for saved preference first
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            isDarkMode = false; // Set to false so toggleTheme will set it to true
+            toggleTheme();
+        } else if (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // If no saved preference, use system preference
             toggleTheme();
         }
     }
@@ -53,6 +61,24 @@ if (window.matchMedia && window.innerWidth >= 1024) {
 
 // Initialize theme on page load
 document.addEventListener('DOMContentLoaded', initializeTheme);
+
+// Scroll fade-in observer for content sections
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+});
+
+// Observe all content sections (only asymmetric sections)
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('#content-container > div.asymmetric-section');
+    sections.forEach(section => observer.observe(section));
+});
 
 // (function() {
 // const container = document.getElementById("title-container");
