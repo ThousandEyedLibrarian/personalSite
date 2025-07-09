@@ -10,7 +10,7 @@ Originally published in my [Second Brain](https://github.com/thousandeyedlibrari
 			- $x_i$: the $i^{th}$ training image with label $y_i$
 2. Split your data into train, test and validation sets
 3. You then take a network $f$ with parameters $w, b$
-4. Use Stochastic [[Gradient Descent]] (or a variation like [[Adaptive Moment Estimation (ADAM)]]) to find the optimal $w, b$ parameters
+4. Use Stochastic Gradient Descent (or a variation like Adaptive Moment Estimation (ADAM)) to find the optimal $w, b$ parameters
 5. Try to optimise your hyper-parameters either manually or via grid search/random search
 
 ### How To Start
@@ -32,7 +32,7 @@ Originally published in my [Second Brain](https://github.com/thousandeyedlibrari
 - Typical data splits:
 	- Train (60%), Val (20%), Test (20%)
 	- Train (80%), Val (10%), Test (10%)
-- Use the training set for training the [[Neural Networks (NN)]]
+- Use the training set for training the Neural Networks (NN)
 - Use the validation set for hyper-parameter optimisation and checking generalisation progress
 - Use the test set only at the very end to check the finalised model
 
@@ -43,7 +43,7 @@ Originally published in my [Second Brain](https://github.com/thousandeyedlibrari
 	- Validation error not going down
 	- Performance on validation is better than on training
 	- Tests on training set different than during training
-- Look for potential or real bottlenecks, e.g. dataloading, compressions, [[Backpropagation (Gradient Flow)]], etc.
+- Look for potential or real bottlenecks, e.g. dataloading, compressions, Backpropagation (Gradient Flow), etc.
 
 ### Error Tips
 - Training error high? You have a bias issue. Basically the model likely doesn't have enough capacity for the task. Get a bigger model, train longer or use a new model architecture (I.e. number of layers, weights, etc.).
