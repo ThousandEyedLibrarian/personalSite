@@ -1,8 +1,8 @@
 # Example Post
 
-*Published: January 15, 2025*
+*Published: July 8th, 2025*
 
-This is an example markdown post to demonstrate how the markdown system works on your site. You can write rich content using standard markdown syntax.
+This is an example markdown post to demonstrate how the markdown system works.
 
 ## Features Supported
 
@@ -53,22 +53,3 @@ greet("Carter");
 | Python | Multi-paradigm | 1991 |
 | Rust | Systems | 2010 |
 | C++ | Multi-paradigm | 1985 |
-
-### Links and Images
-
-You can include [links to external sites](https://github.com) or link to other pages on your site.
-
-## Mathematical Expressions
-
-While not enabled by default, you could add MathJax support for mathematical expressions like:
-
-- Quadratic formula: ax² + bx + c = 0
-- Euler's identity: e^(iπ) + 1 = 0
-
-## Conclusion
-
-This markdown system gives you a powerful way to publish content while maintaining your site's aesthetic. The dark/light theme system works seamlessly with the markdown content.
-
----
-
-*This example demonstrates the various markdown features available in your content system.*
