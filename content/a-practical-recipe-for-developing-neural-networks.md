@@ -2,7 +2,7 @@
 
 *Published: July 9th, 2025*
 
-Originally published in my [Second Brain](https://github.com/thousandeyedlibrarian/SecondBrain).
+Originally published in my [Second Brain](https://github.com/thousandeyedlibrarian/SecondBrain) on August 21, 2023.
 
 ## Overview
 1. You have a dataset with labels:
