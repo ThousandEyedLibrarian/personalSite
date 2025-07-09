@@ -1,10 +1,5 @@
 <!-- TITLE SECTION -->
-<h3 align="center">librarian.wiki</h3>
-
-  <p align="center">
-    <a href="https://librarian.wiki">View Site</a>
-  </p>
-</div>
+<h3 align="center"><a href="https://librarian.wiki">librarian.wiki</a></h3>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
