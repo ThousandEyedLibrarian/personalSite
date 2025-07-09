@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style/cfs.css">
+    <link rel="stylesheet" href="style/cfs.css">
     <title>Librarian</title>
     
     <!-- Marked.js for markdown parsing -->
@@ -15,6 +15,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" id="highlight-light">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" id="highlight-dark" disabled>
+    
+    <!-- MathJax for mathematical expressions -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            startup: {
+                ready() {
+                    MathJax.startup.defaultReady();
+                    // Re-render math when theme changes
+                    document.addEventListener('themeChanged', function() {
+                        setTimeout(() => {
+                            MathJax.typesetPromise();
+                        }, 100);
+                    });
+                }
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -27,7 +57,7 @@
         <h2>Loading article...</h2>
     </div>
 
-    <div id="article-container" style="display: none; max-width: 800px; margin: 0 auto; padding: 2em; margin-top: 4em;">
+    <div id="article-container" style="display: none; max-width: 800px; margin: 0 auto; padding: 1em; margin-top: 2em;">
         <div class="back-button" style="margin-bottom: 2em;">
             <a href="writing.html">← Back to Writing</a>
         </div>
@@ -40,8 +70,8 @@
         
         <div style="text-align: center;">
             <p>
-                <a rel="noopener noreferrer" href="../index.html">Home</a> - <a rel="noopener noreferrer" href="/src/map.html">Map</a> - <a rel="noopener noreferrer" href="/src/writing.html">Writing</a> -
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/carterfaceysmith">GitHub</a> - <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/carterfacey/">LinkedIn</a>
+                <a rel="noopener noreferrer" href="../index.html">Home</a> - <a rel="noopener noreferrer" href="map.html">Map</a> - <a rel="noopener noreferrer" href="writing.html">Writing</a> -
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/ThousandEyedLibrarian">GitHub</a> - <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/carterfacey/">LinkedIn</a>
             </p>
         </div>
     </div>
@@ -67,7 +97,7 @@
 
             try {
                 // Fetch the markdown file
-                const response = await fetch(`../content/${filename}`);                
+                const response = await fetch(`../content/${filename}`);
                 
                 if (!response.ok) {
                     throw new Error(`Failed to load ${filename}`);
@@ -97,6 +127,13 @@
                 document.getElementById('loading-container').style.display = 'none';
                 document.getElementById('article-container').style.display = 'block';
                 
+                // Render MathJax after content is loaded
+                if (window.MathJax) {
+                    MathJax.typesetPromise([document.getElementById('markdown-content')]).then(() => {
+                        console.log('MathJax rendering complete');
+                    }).catch((err) => console.log('MathJax rendering error:', err));
+                }
+                
                 // Update page title
                 const firstHeading = document.querySelector('#markdown-content h1, #markdown-content h2');
                 if (firstHeading) {
@@ -114,7 +151,7 @@
             }
         }
 
-        // Override theme toggle to handle syntax highlighting
+        // Override theme toggle to handle syntax highlighting and MathJax
         const originalToggleTheme = window.toggleTheme;
         window.toggleTheme = function() {
             if (originalToggleTheme) {
@@ -133,6 +170,9 @@
                 lightTheme.disabled = false;
                 darkTheme.disabled = true;
             }
+            
+            // Dispatch theme change event for MathJax
+            document.dispatchEvent(new Event('themeChanged'));
         };
 
         // Load markdown when page loads
@@ -142,9 +182,21 @@
     </script>
     
     <style>
+        /* Base responsive layout */
+        #article-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1em;
+            margin-top: 2em;
+            box-sizing: border-box;
+        }
+
         /* Markdown content styling */
         #markdown-content {
             line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         #markdown-content h1,
@@ -155,6 +207,7 @@
         #markdown-content h6 {
             margin-top: 2em;
             margin-bottom: 1em;
+            line-height: 1.3;
         }
         
         #markdown-content h1:first-child,
@@ -164,17 +217,19 @@
         
         #markdown-content p {
             margin-bottom: 1em;
-            font-size: 1.1em;
+            font-size: 1em;
+            line-height: 1.6;
         }
         
         #markdown-content ul,
         #markdown-content ol {
             margin-bottom: 1em;
-            padding-left: 2em;
+            padding-left: 1.5em;
         }
         
         #markdown-content li {
             margin-bottom: 0.5em;
+            line-height: 1.5;
         }
         
         #markdown-content blockquote {
@@ -190,7 +245,8 @@
             padding: 0.2em 0.4em;
             border-radius: 3px;
             font-family: 'Courier New', monospace;
-            font-size: 0.9em;
+            font-size: 0.85em;
+            word-break: break-word;
         }
         
         #markdown-content pre {
@@ -199,17 +255,24 @@
             border-radius: 5px;
             overflow-x: auto;
             margin: 1em 0;
+            position: relative;
         }
         
         #markdown-content pre code {
             background: none;
             padding: 0;
+            font-size: 0.9em;
+            white-space: pre;
+            word-break: normal;
         }
         
         #markdown-content table {
             border-collapse: collapse;
             width: 100%;
             margin: 1em 0;
+            overflow-x: auto;
+            display: block;
+            white-space: nowrap;
         }
         
         #markdown-content th,
@@ -217,6 +280,7 @@
             border: 1px solid var(--border-color);
             padding: 0.5em;
             text-align: left;
+            min-width: 80px;
         }
         
         #markdown-content th {
@@ -228,28 +292,198 @@
             max-width: 100%;
             height: auto;
             margin: 1em 0;
+            border-radius: 5px;
         }
         
         .back-button a {
             color: var(--text-color);
             text-decoration: none;
             font-weight: 400;
+            font-size: 1em;
         }
         
         .back-button a:hover {
             text-decoration: underline;
         }
-        
-        /* Responsive adjustments */
+
+        /* Mobile-specific styles */
         @media screen and (max-width: 600px) {
             #article-container {
-                padding: 1em;
-                margin-top: 2em;
+                padding: 0.8em;
+                margin-top: 1em;
+            }
+            
+            #markdown-content h1 {
+                font-size: 1.8em;
+                margin-top: 1em;
+            }
+            
+            #markdown-content h2 {
+                font-size: 1.5em;
+                margin-top: 1.5em;
+            }
+            
+            #markdown-content h3 {
+                font-size: 1.3em;
             }
             
             #markdown-content p {
                 font-size: 1em;
+                line-height: 1.7;
             }
+            
+            #markdown-content ul,
+            #markdown-content ol {
+                padding-left: 1.2em;
+            }
+            
+            #markdown-content pre {
+                padding: 0.8em;
+                font-size: 0.9em;
+                border-radius: 3px;
+            }
+            
+            #markdown-content code {
+                font-size: 0.8em;
+                padding: 0.15em 0.3em;
+            }
+            
+            #markdown-content table {
+                font-size: 0.9em;
+            }
+            
+            #markdown-content th,
+            #markdown-content td {
+                padding: 0.4em;
+                min-width: 60px;
+            }
+            
+            #markdown-content blockquote {
+                margin: 1em 0;
+                padding-left: 0.8em;
+                border-left-width: 3px;
+            }
+            
+            .spacing {
+                margin: 2em 0 !important;
+            }
+            
+            /* Navigation links smaller on mobile */
+            #article-container p a {
+                font-size: 0.9em;
+                margin: 0 0.3em;
+            }
+        }
+
+        /* Tablet styles */
+        @media screen and (min-width: 601px) and (max-width: 1023px) {
+            #article-container {
+                padding: 1.5em;
+                margin-top: 1.5em;
+            }
+            
+            #markdown-content p {
+                font-size: 1.1em;
+            }
+            
+            #markdown-content h1 {
+                font-size: 2.2em;
+            }
+            
+            #markdown-content h2 {
+                font-size: 1.8em;
+            }
+            
+            #markdown-content h3 {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Desktop styles */
+        @media screen and (min-width: 1024px) {
+            #article-container {
+                padding: 2em;
+                margin-top: 3em;
+            }
+            
+            #markdown-content p {
+                font-size: 1.1em;
+            }
+            
+            #markdown-content h1 {
+                font-size: 2.5em;
+            }
+            
+            #markdown-content h2 {
+                font-size: 2em;
+            }
+            
+            #markdown-content h3 {
+                font-size: 1.6em;
+            }
+        }
+
+        /* Ensure table responsiveness */
+        .table-container {
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        
+        .table-container table {
+            display: table;
+            white-space: nowrap;
+            min-width: 100%;
+        }
+
+        /* Code block mobile optimization */
+        @media screen and (max-width: 600px) {
+            #markdown-content pre {
+                /* Allow horizontal scrolling on mobile for code blocks */
+                overflow-x: scroll;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            #markdown-content pre code {
+                font-size: 0.8em;
+            }
+        }
+
+        /* MathJax styling */
+        .MathJax {
+            font-size: 1em !important;
+        }
+        
+        /* Display math (block equations) */
+        mjx-container[display="true"] {
+            margin: 1em 0 !important;
+            text-align: center;
+        }
+        
+        /* Inline math */
+        mjx-container[display="false"] {
+            margin: 0 0.1em;
+        }
+        
+        /* Responsive math on mobile */
+        @media screen and (max-width: 600px) {
+            .MathJax {
+                font-size: 0.9em !important;
+            }
+            
+            mjx-container[display="true"] {
+                margin: 0.8em 0 !important;
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+        }
+        
+        /* Math color adaptation for themes */
+        [data-theme="dark"] .MathJax {
+            color: var(--text-color) !important;
+        }
+        
+        [data-theme="dark"] mjx-container {
+            color: var(--text-color) !important;
         }
     </style>
 </body>
