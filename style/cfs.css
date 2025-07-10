@@ -74,33 +74,41 @@ h3 {
 
 /* Auto dark mode for mobile and tablet */
 @media screen and (max-width: 1023px) {
+    :root {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --link-color: #e0e0e0;
+        --hover-bg: #333333;
+        --border-color: #444;
+    }
+    
     body {
-        background-color: #1a1a1a;
-        color: #e0e0e0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
     }
     
     body a {
-        color: #e0e0e0;
+        color: var(--link-color);
     }
     
     #carousel {
-        background-color: #1a1a1a;
+        background-color: var(--bg-color);
     }
     
     [class^="label_"] {
-        background-color: #1a1a1a;
+        background-color: var(--bg-color);
     }
     
     [class^="label_"]:hover {
-        background-color: #333333;
+        background-color: var(--hover-bg);
     }
     
     #button_a:checked ~ #navigation .label_a,
     #button_b:checked ~ #navigation .label_b,
     #button_c:checked ~ #navigation .label_c,
     #button_d:checked ~ #navigation .label_d {
-        color: #1a1a1a;
-        background-color: #e0e0e0;
+        color: var(--bg-color);
+        background-color: var(--text-color);
     }
 }
 
