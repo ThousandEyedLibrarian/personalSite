@@ -306,72 +306,131 @@
             text-decoration: underline;
         }
 
-        /* Mobile-specific styles */
+        /* Mobile-specific styles - Improved readability */
         @media screen and (max-width: 600px) {
             #article-container {
-                padding: 0.8em;
-                margin-top: 1em;
+                padding: 1em 0.8em;
+                margin-top: 0.5em;
             }
             
+            /* Better typography for mobile reading */
             #markdown-content h1 {
-                font-size: 1.8em;
-                margin-top: 1em;
+                font-size: 2em;
+                margin-top: 0.8em;
+                margin-bottom: 0.6em;
+                line-height: 1.2;
             }
             
             #markdown-content h2 {
-                font-size: 1.5em;
-                margin-top: 1.5em;
+                font-size: 1.6em;
+                margin-top: 1.2em;
+                margin-bottom: 0.8em;
+                line-height: 1.3;
             }
             
             #markdown-content h3 {
-                font-size: 1.3em;
+                font-size: 1.4em;
+                margin-top: 1em;
+                margin-bottom: 0.6em;
+                line-height: 1.3;
             }
             
+            #markdown-content h4 {
+                font-size: 1.2em;
+                margin-top: 0.8em;
+                margin-bottom: 0.5em;
+            }
+            
+            /* Larger, more readable body text */
             #markdown-content p {
-                font-size: 1em;
-                line-height: 1.7;
+                font-size: 1.1em;
+                line-height: 1.8;
+                margin-bottom: 1.2em;
             }
             
+            /* Better list formatting */
             #markdown-content ul,
             #markdown-content ol {
-                padding-left: 1.2em;
+                padding-left: 1.4em;
+                margin-bottom: 1.2em;
+            }
+            
+            #markdown-content li {
+                margin-bottom: 0.6em;
+                line-height: 1.7;
+                font-size: 1.05em;
+            }
+            
+            /* Code styling improvements */
+            #markdown-content code {
+                font-size: 0.9em;
+                padding: 0.2em 0.4em;
+                border-radius: 4px;
             }
             
             #markdown-content pre {
-                padding: 0.8em;
-                font-size: 0.9em;
-                border-radius: 3px;
+                padding: 1em;
+                font-size: 0.85em;
+                border-radius: 6px;
+                margin: 1.2em 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
             
-            #markdown-content code {
-                font-size: 0.8em;
-                padding: 0.15em 0.3em;
+            #markdown-content pre code {
+                font-size: 0.85em;
+                line-height: 1.4;
             }
             
+            /* Table improvements */
             #markdown-content table {
                 font-size: 0.9em;
+                margin: 1.2em 0;
             }
             
             #markdown-content th,
             #markdown-content td {
-                padding: 0.4em;
-                min-width: 60px;
+                padding: 0.6em 0.4em;
+                min-width: 70px;
             }
             
+            /* Blockquote improvements */
             #markdown-content blockquote {
-                margin: 1em 0;
-                padding-left: 0.8em;
-                border-left-width: 3px;
+                margin: 1.2em 0;
+                padding-left: 1em;
+                border-left-width: 4px;
+                font-size: 1.05em;
+                line-height: 1.7;
             }
             
+            /* Image spacing */
+            #markdown-content img {
+                margin: 1.2em 0;
+                border-radius: 6px;
+            }
+            
+            /* Better spacing for content sections */
             .spacing {
-                margin: 2em 0 !important;
+                margin: 2.5em 0 !important;
             }
             
-            /* Navigation links smaller on mobile */
+            /* Navigation links */
             #article-container p a {
-                font-size: 0.9em;
-                margin: 0 0.3em;
+                font-size: 1em;
+                margin: 0 0.4em;
+                padding: 0.2em 0;
+                display: inline-block;
+            }
+            
+            /* Back button improvements */
+            .back-button {
+                margin-bottom: 1.5em !important;
+            }
+            
+            .back-button a {
+                font-size: 1.1em !important;
+                padding: 0.5em 0;
+                display: inline-block;
             }
         }
 
