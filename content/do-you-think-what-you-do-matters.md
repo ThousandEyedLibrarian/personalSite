@@ -4,9 +4,9 @@
 
 It's a deceptively simple question really. Do you?  
 
-Each day you wake up, glance out a window (hopefully), and whatever the weather, you venture forth and undertake preset and dynamics tasks based on the life circumstances you find yourself in at that given time.
+Each day you wake up, glance out a window (hopefully), and whatever the weather, you venture forth and undertake preset and dynamic tasks based on the life circumstances you find yourself in at that given time.
 
-Do you stop and think for a second, why? To what end? Am I working towards something, is that thing worthwhile if so and why not if not.
+Do you stop and think for a second, why? To what end? Am I working towards something, is that thing worthwhile if so, and why not if not.
 
 ## The Bullshit
 
