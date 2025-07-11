@@ -2,7 +2,7 @@
 
 *Published: July 10th, 2025*
 
-It's a deceptively simple question really. Do you? 
+It's a deceptively simple question really. Do you?  
 
 Each day you wake up, glance out a window (hopefully), and whatever the weather, you venture forth and undertake preset and dynamics tasks based on the life circumstances you find yourself in at that given time.
 
